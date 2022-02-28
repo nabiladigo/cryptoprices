@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-
+import { Outlet } from "react-router";
 import { Routes, Route,useParams,  } from "react-router-dom";
 import Currencies from "./pages/currencies";
 import Main from "./pages/main";
@@ -15,18 +15,7 @@ function App() {
   // We will use the Route component to specify each route
   return (
     <div className="App">
-      <Nav />
-      
-      <Route  exact path="/">
-        <Main />
-      </Route>
-      <Route path="/currencies/">
-        <Currencies />
-      </Route>
-      <Route
-        path="/price/:symbol"
-        render={(routerProps) => <Price {...routerProps} />}
-      />
+      <Outlet />
     </div>
   );
 }

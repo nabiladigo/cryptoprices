@@ -8,19 +8,26 @@ import { BrowserRouter,
 import App from './App';
 import Main from './pages/main';
 import Currencies from './pages/currencies';
-import Prices from './pages/price'
+import Price from './pages/price';
+import Nav from './components/nav';
 
 
 
 ReactDOM.render(
   <BrowserRouter>
-    <Routes>
-      {/* <Route path='/' element={<App />}> */}
-        <Route path='/' element= {<Main/>} />
-        <Route path='/prices' element={<Prices />} />
-        <Route path='currencies' element={<Currencies />} />
-      {/* </Route> */}
-    </Routes>
+    <Nav />
+      <Routes>
+        <Route  exact path="/" element = { <Main /> } />
+        <Route path="/currencies/" element= { < Currencies />}  />
+        {/* <Route
+          path="/price/:symbol"
+          render={(routerProps) => <Price {...routerProps} />}
+        /> */}
+        <Route path="/price/" element = {< Price />}>
+          <Route path=":symbol" element ={<Price />} />
+      
+        </Route>
+      </Routes>
   </BrowserRouter>,
   document.getElementById("root")
 );
